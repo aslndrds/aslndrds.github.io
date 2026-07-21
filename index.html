@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aydoğdu Studios</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,Helvetica,sans-serif;
+        }
+
+        body{
+            background:#111;
+            color:white;
+        }
+
+        header{
+            background:#1b1b1b;
+            padding:20px 10%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            position:sticky;
+            top:0;
+        }
+
+        .logo{
+            font-size:30px;
+            font-weight:bold;
+            color:#ff8c00;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:25px;
+            transition:.3s;
+        }
+
+        nav a:hover{
+            color:#ff8c00;
+        }
+
+        .hero{
+            text-align:center;
+            padding:120px 20px;
+            background:linear-gradient(180deg,#1a1a1a,#111);
+        }
+
+        .hero h1{
+            font-size:55px;
+            margin-bottom:20px;
+        }
+
+        .hero p{
+            color:#cfcfcf;
+            font-size:22px;
+            max-width:700px;
+            margin:auto;
+        }
+
+        .games{
+            padding:80px 10%;
+        }
+
+        .games h2{
+            text-align:center;
+            margin-bottom:50px;
+            font-size:40px;
+        }
+
+        .card{
+            background:#222;
+            border-radius:15px;
+            padding:30px;
+            max-width:500px;
+            margin:auto;
+            transition:.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card h3{
+            color:#ff8c00;
+            margin-bottom:15px;
+        }
+
+        .card p{
+            color:#ddd;
+            line-height:1.7;
+        }
+
+        .button{
+            display:inline-block;
+            margin-top:20px;
+            background:#ff8c00;
+            color:white;
+            padding:12px 22px;
+            text-decoration:none;
+            border-radius:8px;
+        }
+
+        footer{
+            margin-top:100px;
+            text-align:center;
+            padding:35px;
+            background:#1b1b1b;
+            color:#888;
+        }
+
+        @media(max-width:700px){
+
+            header{
+                flex-direction:column;
+            }
+
+            nav{
+                margin-top:15px;
+            }
+
+            nav a{
+                display:block;
+                margin:10px 0;
+            }
+
+            .hero h1{
+                font-size:40px;
+            }
+
+            .hero p{
+                font-size:18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+AYDOĞDU STUDIOS
+</div>
+
+<nav>
+
+<a href="#">Ana Sayfa</a>
+<a href="#">Oyunlar</a>
+<a href="#">Gizlilik</a>
+<a href="#">Destek</a>
+<a href="#">İletişim</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Mobil Oyun Geliştiriyoruz</h1>
+
+<p>
+
+Kaliteli, eğlenceli ve özgün mobil oyunlar geliştiriyoruz.
+
+</p>
+
+</section>
+
+<section class="games">
+
+<h2>Oyunlarımız</h2>
+
+<div class="card">
+
+<h3>🌿 VineBound</h3>
+
+<p>
+
+Mantık ve strateji üzerine kurulu, çevrimdışı oynanabilen eğlenceli bulmaca oyunu.
+
+120 benzersiz bölüm.
+
+</p>
+
+<a class="button" href="#">
+Yakında Google Play'de
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Aydoğdu Studios
+
+</footer>
+
+</body>
+</html>

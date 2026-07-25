@@ -78,8 +78,16 @@
             border-radius:15px;
             padding:30px;
             max-width:500px;
-            margin:auto;
+            margin:0;
             transition:.3s;
+        }
+
+        .game-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:24px;
+            max-width:1050px;
+            margin:auto;
         }
 
         .card:hover{
@@ -179,6 +187,8 @@ Kaliteli, eğlenceli ve özgün mobil oyunlar geliştiriyoruz.
 
 <h2>Oyunlarımız</h2>
 
+<div class="game-grid">
+
 <div class="card">
 
 <h3>🌿 VineBound</h3>
@@ -194,6 +204,24 @@ Mantık ve strateji üzerine kurulu, çevrimdışı oynanabilen eğlenceli bulma
 <a class="button" href="#">
 Yakında Google Play'de
 </a>
+
+</div>
+
+<div class="card">
+
+<h3>❓ QuickPeek</h3>
+
+<p>
+
+Görselin yalnızca birkaç karesinden doğru cevabı bul. Farklı kategoriler, beş zorluk seviyesi, ipuçları ve yüzlerce soru.
+
+</p>
+
+<a class="button" href="quickpeek/privacy.html">
+Gizlilik Politikası
+</a>
+
+</div>
 
 </div>
 

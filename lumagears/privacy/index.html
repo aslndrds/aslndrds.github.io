@@ -8,16 +8,22 @@
   <style>
     :root { color-scheme: dark; font-family: system-ui, sans-serif; }
     body { margin: 0; background: #071725; color: #eaf8fc; line-height: 1.65; }
-    main { width: min(100% - 32px, 760px); margin: 0 auto; padding: 36px 0 70px; }
+    .policy-nav { position: sticky; z-index: 10; top: 0; padding: 10px 16px; background: linear-gradient(#071725 72%, rgba(7,23,37,.86)); }
+    main { width: min(100% - 32px, 760px); margin: 0 auto; padding: 18px 0 28px; }
     h1, h2 { color: #ffd36a; line-height: 1.2; }
     h1 { font-size: 32px; }
     h2 { margin-top: 30px; font-size: 20px; }
     p, li { color: #bfd6df; }
     a { color: #52e5ff; }
     .note { padding: 14px; border: 1px solid #285468; border-radius: 12px; background: #0c2635; }
+    button { min-height: 48px; padding: 10px 18px; border: 1px solid #79efff; border-radius: 14px; color: white; background: linear-gradient(#27cbe0, #087f9b); font: inherit; font-weight: 800; }
+    .back-button { min-height: 42px; padding: 7px 14px; background: #0c2635; border-color: #285468; }
+    .bottom-back { width: 100%; margin-top: 24px; }
+    #choiceMessage { min-height: 24px; font-size: 14px; }
   </style>
 </head>
 <body>
+  <header class="policy-nav"><button class="back-button" type="button" data-return>‹ Oyuna dön</button></header>
   <main>
     <h1>LumaGears Gizlilik Politikası</h1>
     <p>Son güncelleme: 2 Ağustos 2026</p>
@@ -31,6 +37,8 @@
 
     <h2>Reklamlar ve izin tercihleri</h2>
     <p>Banner, geçiş, ödüllü ve uygulama açılış reklamları Google AdMob tarafından sağlanır. Ödüllü reklamlar yalnızca kullanıcı açıkça seçtiğinde gösterilir. Uygulama içindeki “Gizlilik ve reklam tercihleri” seçeneği üzerinden uygun bölgelerde izin tercihleri tekrar açılabilir.</p>
+    <button id="manageAds" type="button">Reklam tercihlerini yönet</button>
+    <p id="choiceMessage">Bu seçenek, Google'ın bölgeniz için sunduğu izin formunu açar.</p>
 
     <h2>Çocukların gizliliği</h2>
     <p>LumaGears özellikle çocukları hedefleyen bir uygulama olarak tasarlanmamıştır. Uygulama Google Play’in Designed for Families programına yönelik değildir.</p>
@@ -43,6 +51,24 @@
 
     <h2>İletişim</h2>
     <p>Gizlilik ve reklam tercihleriyle ilgili sorularınız için <a href="mailto:imhotep.mstf@gmail.com">imhotep.mstf@gmail.com</a> adresine yazabilirsiniz.</p>
+    <button class="bottom-back" type="button" data-return>Oyuna geri dön</button>
   </main>
+  <script>
+    const manageButton = document.getElementById('manageAds');
+    const choiceMessage = document.getElementById('choiceMessage');
+    manageButton.addEventListener('click', () => {
+      if (window.AndroidAds && window.AndroidAds.showPrivacyOptions) {
+        choiceMessage.textContent = 'Google reklam tercihleri kontrol ediliyor…';
+        window.AndroidAds.showPrivacyOptions();
+      } else {
+        choiceMessage.textContent = 'Reklam tercihleri yalnızca LumaGears Android uygulamasının içinden yönetilebilir.';
+      }
+    });
+    document.querySelectorAll('[data-return]').forEach(button => button.addEventListener('click', () => {
+      if (history.length > 1) history.back();
+      else if (location.protocol === 'file:') window.location.href = 'index.html';
+      else window.location.href = 'https://aslndrds.github.io/';
+    }));
+  </script>
 </body>
 </html>

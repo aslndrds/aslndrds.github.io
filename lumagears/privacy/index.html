@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#071725">
-  <title>LumaGears Gizlilik Politikası</title>
+  <title>LumaGears Privacy Policy</title>
   <style>
     :root { color-scheme: dark; font-family: system-ui, sans-serif; }
     body { margin: 0; background: #071725; color: #eaf8fc; line-height: 1.65; }
@@ -19,12 +19,14 @@
     button { min-height: 48px; padding: 10px 18px; border: 1px solid #79efff; border-radius: 14px; color: white; background: linear-gradient(#27cbe0, #087f9b); font: inherit; font-weight: 800; }
     .back-button { min-height: 42px; padding: 7px 14px; background: #0c2635; border-color: #285468; }
     .bottom-back { width: 100%; margin-top: 24px; }
-    #choiceMessage { min-height: 24px; font-size: 14px; }
+    [data-choice-message] { min-height: 24px; font-size: 14px; }
+    [data-lang] { display: none; }
+    html[lang="tr"] [data-lang="tr"], html[lang="en"] [data-lang="en"] { display: block; }
   </style>
 </head>
 <body>
-  <header class="policy-nav"><button class="back-button" type="button" data-return>‹ Oyuna dön</button></header>
-  <main>
+  <header class="policy-nav"><button class="back-button" type="button" data-return>‹ Back to game</button></header>
+  <main data-lang="tr">
     <h1>LumaGears Gizlilik Politikası</h1>
     <p>Son güncelleme: 2 Ağustos 2026</p>
     <p>LumaGears, ilerleme durumunuzu ve oyun tercihlerinizi cihazınızda saklayan bir mobil bulmaca oyunudur. Oyun; reklam sunumu, izin yönetimi ve reklam performansının ölçülmesi için Google Mobile Ads ve Google User Messaging Platform hizmetlerini kullanır.</p>
@@ -37,8 +39,8 @@
 
     <h2>Reklamlar ve izin tercihleri</h2>
     <p>Banner, geçiş, ödüllü ve uygulama açılış reklamları Google AdMob tarafından sağlanır. Ödüllü reklamlar yalnızca kullanıcı açıkça seçtiğinde gösterilir. Uygulama içindeki “Gizlilik ve reklam tercihleri” seçeneği üzerinden uygun bölgelerde izin tercihleri tekrar açılabilir.</p>
-    <button id="manageAds" type="button">Reklam tercihlerini yönet</button>
-    <p id="choiceMessage">Bu seçenek, Google'ın bölgeniz için sunduğu izin formunu açar.</p>
+    <button type="button" data-manage>Reklam tercihlerini yönet</button>
+    <p data-choice-message>Bu seçenek, Google'ın bölgeniz için sunduğu izin formunu açar.</p>
 
     <h2>Çocukların gizliliği</h2>
     <p>LumaGears özellikle çocukları hedefleyen bir uygulama olarak tasarlanmamıştır. Uygulama Google Play’in Designed for Families programına yönelik değildir.</p>
@@ -53,17 +55,49 @@
     <p>Gizlilik ve reklam tercihleriyle ilgili sorularınız için <a href="mailto:imhotep.mstf@gmail.com">imhotep.mstf@gmail.com</a> adresine yazabilirsiniz.</p>
     <button class="bottom-back" type="button" data-return>Oyuna geri dön</button>
   </main>
+  <main data-lang="en">
+    <h1>LumaGears Privacy Policy</h1>
+    <p>Last updated: August 2, 2026</p>
+    <p>LumaGears is a mobile puzzle game that stores your progress and game preferences on your device. The game uses Google Mobile Ads and Google User Messaging Platform for advertising, consent management, and ad performance measurement.</p>
+
+    <h2>Information collected and processed</h2>
+    <p>The game itself does not request your name, email address, phone number, contacts, precise location, or user-generated content. Subject to applicable consent and regional rules, Google advertising services may process device identifiers, ad interactions, approximate location, and technical device information.</p>
+
+    <h2>Game data</h2>
+    <p>Level progress, stars, gold balance, and settings are stored only in the app’s local device storage. These local records may be deleted when the app is uninstalled.</p>
+
+    <h2>Advertising and consent choices</h2>
+    <p>Banner, interstitial, rewarded, and app-open ads are provided by Google AdMob. Rewarded ads are shown only after the user explicitly chooses them. In eligible regions, consent choices can be reopened through “Privacy and ad choices” inside the app.</p>
+    <button type="button" data-manage>Manage ad choices</button>
+    <p data-choice-message>This option opens the consent form Google provides for your region.</p>
+
+    <h2>Children’s privacy</h2>
+    <p>LumaGears is not designed specifically for children and is not intended for Google Play’s Designed for Families program.</p>
+
+    <h2>Third-party services</h2>
+    <ul>
+      <li><a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
+      <li><a href="https://support.google.com/admob/answer/6128543">Google AdMob policies</a></li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>For questions about privacy or advertising choices, contact <a href="mailto:imhotep.mstf@gmail.com">imhotep.mstf@gmail.com</a>.</p>
+    <button class="bottom-back" type="button" data-return>Back to game</button>
+  </main>
   <script>
-    const manageButton = document.getElementById('manageAds');
-    const choiceMessage = document.getElementById('choiceMessage');
-    manageButton.addEventListener('click', () => {
+    const isTr = String(navigator.language || '').toLowerCase().startsWith('tr');
+    document.documentElement.lang = isTr ? 'tr' : 'en';
+    document.title = isTr ? 'LumaGears Gizlilik Politikası' : 'LumaGears Privacy Policy';
+    document.querySelector('.policy-nav [data-return]').textContent = isTr ? '‹ Oyuna dön' : '‹ Back to game';
+    document.querySelectorAll('[data-manage]').forEach(manageButton => manageButton.addEventListener('click', () => {
+      const choiceMessage = manageButton.parentElement.querySelector('[data-choice-message]');
       if (window.AndroidAds && window.AndroidAds.showPrivacyOptions) {
-        choiceMessage.textContent = 'Google reklam tercihleri kontrol ediliyor…';
+        choiceMessage.textContent = isTr ? 'Google reklam tercihleri kontrol ediliyor…' : 'Checking Google ad choices…';
         window.AndroidAds.showPrivacyOptions();
       } else {
-        choiceMessage.textContent = 'Reklam tercihleri yalnızca LumaGears Android uygulamasının içinden yönetilebilir.';
+        choiceMessage.textContent = isTr ? 'Reklam tercihleri yalnızca LumaGears Android uygulamasının içinden yönetilebilir.' : 'Ad choices can only be managed from inside the LumaGears Android app.';
       }
-    });
+    }));
     document.querySelectorAll('[data-return]').forEach(button => button.addEventListener('click', () => {
       if (history.length > 1) history.back();
       else if (location.protocol === 'file:') window.location.href = 'index.html';

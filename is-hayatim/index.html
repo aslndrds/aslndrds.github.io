@@ -17,7 +17,7 @@
 <h1>Verilerinizin kontrolü sizde.</h1>
 <p class="lead">İş Hayatım Android uygulamasının verileri nasıl işlediğini, hesabınızı nasıl silebileceğinizi, kullanım koşullarını ve güncel sürüm bilgilerini burada açıkça anlatıyoruz.</p>
 <nav><a href="#gizlilik">Gizlilik</a><a class="primary" href="#hesap-silme">Hesap ve veri silme</a><a href="#kosullar">Kullanım koşulları</a><a href="#surum-notlari">Sürüm notları</a></nav>
-<p class="meta">Paket: com.ishayatim.app · Son güncelleme: 1 Ağustos 2026</p>
+<p class="meta">Paket: com.ishayatim.app · Son güncelleme: 10 Ağustos 2026</p>
 </header>
 
 <section id="gizlilik" class="section">
@@ -26,7 +26,8 @@
 <article><h3>Toplanan veriler</h3><p>Hesap bilgileri; ad, doğum tarihi ve isteğe bağlı profil alanları; işyeri, çalışma, mesai, izin, ücret, bordro, emeklilik, CV ve uygulama tercihleri işlenebilir. Banka hesabı veya ödeme kartı verisi işlenmez.</p></article>
 <article><h3>Kullanım amacı</h3><p>Veriler hesap açma, güvenli giriş, cihazlar arası bulut eşitleme, çalışma ve ücret hesaplamaları, rapor/CV üretme, hatırlatma, yedekleme, sürüm yönetimi ve destek amaçlarıyla kullanılır.</p></article>
 <article><h3>Reklam ve ölçüm verileri</h3><p>Kişisel çalışma, ücret, izin, emeklilik ve CV verileri satılmaz veya reklam hedeflemede kullanılmaz. Google AdMob; reklam sunma, ölçüm ve sahtekârlığı önleme amacıyla IP adresi, uygulama etkileşimleri, tanılama bilgileri ve cihaz/reklam tanımlayıcıları gibi verileri işleyebilir.</p></article>
-<article><h3>Hizmet sağlayıcılar</h3><p>Google Firebase Authentication güvenli girişi, Cloud Firestore bulut eşitlemesini, App Check kötüye kullanım önlemeyi, Remote Config sürüm yapılandırmasını ve Google AdMob reklam sunumunu destekler.</p></article>
+<article><h3>Hata ve kararlılık tanılaması</h3><p>Firebase Crashlytics, yalnızca yayın sürümündeki çökme, ANR ve kişisel içerikten arındırılmış sınırlı teknik hataları tespit etmek için kullanılır. Maaş, çalışma, tarih, e-posta, CV içeriği, belge yolu ve özgün hata mesajı Crashlytics özel alanlarına eklenmez. Debug ve yerel test derlemelerinde otomatik toplama kapalıdır.</p></article>
+<article><h3>Hizmet sağlayıcılar</h3><p>Google Firebase Authentication güvenli girişi, Cloud Firestore bulut eşitlemesini, App Check kötüye kullanım önlemeyi, Remote Config sürüm yapılandırmasını ve Crashlytics kararlılık tanılamasını; Google Play Billing satın alma ve abonelik işlemlerini; Google AdMob reklam sunumunu destekler. Google Analytics kullanılmaz.</p></article>
 <article><h3>Güvenlik</h3><p>Ağ iletişimi TLS ile yapılır, şifresiz HTTP kapalıdır ve Firestore kuralları kayıtları kullanıcı kimliğine göre ayırır. Parolalar uygulamada veya Firestore'da tutulmaz.</p></article>
 <article><h3>Saklama ve haklarınız</h3><p>Bulut verileri hesap açık olduğu sürece saklanır. Kullanıcı verisine erişebilir, düzeltebilir, dışa aktarabilir ve hesabıyla birlikte silebilir. Yerel veriler uygulama kaldırıldığında cihazdan silinebilir.</p></article>
 <article><h3>İzinler</h3><p>İnternet ve ağ durumu eşitleme, güncelleme ve reklamlar için kullanılır. Bildirim, fotoğraf veya dosya erişimi yalnızca ilgili özellik kullanıldığında ve Android'in gerektirdiği şekilde istenir.</p></article>
@@ -43,10 +44,11 @@
 <li><span>1</span><div><h3>Uygulamayı açın</h3><p>İş Hayatım hesabınıza giriş yapın.</p></div></li>
 <li><span>2</span><div><h3>Profil ve Ayarlar'a gidin</h3><p>Daha menüsünden Profil ve Ayarlar bölümünü açın.</p></div></li>
 <li><span>3</span><div><h3>Hesabı kapat'ı seçin</h3><p>Hesap ve verileri sil seçeneğine dokunun.</p></div></li>
-<li><span>4</span><div><h3>Kalıcı silmeyi onaylayın</h3><p>Onaydan sonra Firebase Authentication hesabı ve Firestore bulut verileri silinir; bu işlem geri alınamaz.</p></div></li>
+<li><span>4</span><div><h3>Kalıcı silmeyi onaylayın</h3><p>Onaydan sonra Firebase Authentication hesabı, Firestore bulut verileri ve uygulamadaki yerel kullanıcı verileri silinir; bu işlem geri alınamaz.</p></div></li>
 </ol>
 <div class="delete"><div><h3>Uygulamaya erişemiyor musunuz?</h3><p>Hesapta kullandığınız e-posta adresinden silme talebi gönderin. Kimlik doğrulamasından sonra talep işleme alınır.</p></div><a href="mailto:imhotep.mstf@gmail.com?subject=İş%20Hayatım%20hesap%20silme%20talebi">Silme talebi gönder</a></div>
 <p class="small">Yasal bir saklama zorunluluğu yoksa doğrulanmış silme talepleri en geç 30 gün içinde sonuçlandırılır. Uygulamadan bağımsız olarak dışa aktardığınız dosyalar ve cihaz yedekleri sizin kontrolünüzdedir.</p>
+<p class="small">Hesabı silmek, Google Play tarafından yönetilen yıllık aboneliği otomatik olarak iptal etmez. Yenilemeyi durdurmak için aboneliğin Google Play'den ayrıca iptal edilmesi gerekir. Ödeme makbuzları ve yasal işlem kayıtları Google'ın kendi saklama kurallarına tabidir.</p>
 </section>
 
 <section id="kosullar" class="section terms">
@@ -56,6 +58,7 @@
 <article><h3>Resmî kaynak değildir</h3><p>Uygulama hukuki, mali veya sosyal güvenlik danışmanlığı vermez. Kesin sonuçlar için güncel mevzuat, bordro kayıtları, e-Devlet/SGK ve yetkili uzmanlar esas alınmalıdır.</p></article>
 <article><h3>Kullanıcı sorumluluğu</h3><p>Girilen bilgilerin doğruluğu, hesap güvenliği, dışa aktarılan dosyaların korunması ve sonuçların kullanılmasından kullanıcı sorumludur.</p></article>
 <article><h3>Reklamlar ve dışa aktarma</h3><p>Ücretsiz uygulama reklam içerebilir. Bazı isteğe bağlı dışa aktarma işlemlerinde ödüllü reklam sunulabilir; reklam kullanılamadığında temel verilerinize erişiminiz engellenmez.</p></article>
+<article><h3>Premium ve ödemeler</h3><p>Yıllık veya ömür boyu Premium sunulabilir. Ödemeler Google Play tarafından işlenir; uygulama banka veya ödeme kartı bilgisi görmez ya da saklamaz. Satın alma, geri yükleme ve hak doğrulama işlemleri Google Play hesabı ile güvenli sunucu denetimine dayanır.</p></article>
 <article><h3>Hizmet değişiklikleri</h3><p>Uyumluluk, güvenlik ve mevzuat gereksinimleri için özellikler veya desteklenen sürümler değiştirilebilir. Kritik durumlarda uygulama güncellemesi zorunlu tutulabilir.</p></article>
 <article><h3>Sorumluluk sınırı</h3><p>Hesaplamalar tahminidir. Veri girişi hataları, mevzuat değişiklikleri, bağlantı kesintileri veya üçüncü taraf hizmetlerinden kaynaklanan sonuçlar için garanti verilmez.</p></article>
 </div>
@@ -63,6 +66,12 @@
 
 <section id="surum-notlari" class="section releases">
 <p class="no">04</p><h2>Sürüm notları</h2>
+<div class="release"><h3>1.8.1 · Kapalı test güncellemesi</h3><p class="small">10 Ağustos 2026</p><ul>
+<li>Emeklilik hedefindeki kalan süre gerçek takvim yılı, ayı ve günü biçiminde düzeltildi.</li>
+<li>Google hesap yeniden doğrulama yönlendirmesi ve Premium güvenlik denetimi iyileştirildi.</li>
+<li>Play Integrity ve Firebase App Check güvenlik bağlantısı tamamlandı.</li>
+<li>Bir sonraki sürüm için kullanıcı içeriğini taşımayan Crashlytics çökme/ANR tanılaması hazırlandı.</li>
+</ul></div>
 <div class="release"><h3>1.5.0 · Kapalı test sürümü</h3><p class="small">1 Ağustos 2026</p><ul>
 <li>Google Play uygulama içi güncelleme, sürüm notları ve kritik sürümlerde zorunlu güncelleme desteği eklendi.</li>
 <li>Minimum desteklenen sürüm Firebase Remote Config üzerinden yönetilebilir hâle getirildi.</li>

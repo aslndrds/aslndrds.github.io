@@ -330,7 +330,6 @@ img { max-width: 100%; }
   background: linear-gradient(145deg, #1e2229 0%, #090a0c 70%);
   border: 1px solid rgba(255,255,255,.15);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.035), 0 30px 90px rgba(0,0,0,.58);
-  animation: stage-float 7s ease-in-out infinite;
 }
 .home-page .stage-main::before { border-color: var(--home-orange); box-shadow: 0 0 55px rgba(255,122,0,.38); }
 .home-page .stage-main::after { background: linear-gradient(145deg, #143c4d, #092129); }
@@ -387,11 +386,6 @@ img { max-width: 100%; }
 .home-page .contact-strip .button-primary { color: #111; background: var(--home-orange); }
 .home-page .site-footer { color: var(--home-text); border-color: var(--home-line); background: #060709; }
 .home-page .site-footer p, .home-page .site-footer > small { color: #888d96; }
-
-@keyframes stage-float {
-  0%, 100% { transform: rotate(5deg) translateY(0); }
-  50% { transform: rotate(3deg) translateY(-13px); }
-}
 
 @media (max-width: 780px) {
   .home-page .main-nav { color: var(--home-text); border-color: var(--home-line); background: rgba(15,17,20,.98); }

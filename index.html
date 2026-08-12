@@ -1,263 +1,274 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aydoğdu Studios</title>
-
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial,Helvetica,sans-serif;
-        }
-
-        body{
-            background:#111;
-            color:white;
-        }
-
-        header{
-            background:#1b1b1b;
-            padding:20px 10%;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            position:sticky;
-            top:0;
-        }
-
-        .logo{
-            font-size:30px;
-            font-weight:bold;
-            color:#ff8c00;
-        }
-
-        nav a{
-            color:white;
-            text-decoration:none;
-            margin-left:25px;
-            transition:.3s;
-        }
-
-        nav a:hover{
-            color:#ff8c00;
-        }
-
-        .hero{
-            text-align:center;
-            padding:120px 20px;
-            background:linear-gradient(180deg,#1a1a1a,#111);
-        }
-
-        .hero h1{
-            font-size:55px;
-            margin-bottom:20px;
-        }
-
-        .hero p{
-            color:#cfcfcf;
-            font-size:22px;
-            max-width:700px;
-            margin:auto;
-        }
-
-        .games{
-            padding:80px 10%;
-        }
-
-        .games h2{
-            text-align:center;
-            margin-bottom:50px;
-            font-size:40px;
-        }
-
-        .card{
-            background:#222;
-            border-radius:15px;
-            padding:30px;
-            max-width:500px;
-            margin:0;
-            transition:.3s;
-        }
-
-        .game-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-            gap:24px;
-            max-width:1050px;
-            margin:auto;
-        }
-
-        .card:hover{
-            transform:translateY(-8px);
-        }
-
-        .card h3{
-            color:#ff8c00;
-            margin-bottom:15px;
-        }
-
-        .card p{
-            color:#ddd;
-            line-height:1.7;
-        }
-
-        .button{
-            display:inline-block;
-            margin-top:20px;
-            background:#ff8c00;
-            color:white;
-            padding:12px 22px;
-            text-decoration:none;
-            border-radius:8px;
-        }
-
-        footer{
-            margin-top:100px;
-            text-align:center;
-            padding:35px;
-            background:#1b1b1b;
-            color:#888;
-        }
-
-        @media(max-width:700px){
-
-            header{
-                flex-direction:column;
-            }
-
-            nav{
-                margin-top:15px;
-            }
-
-            nav a{
-                display:block;
-                margin:10px 0;
-            }
-
-            .hero h1{
-                font-size:40px;
-            }
-
-            .hero p{
-                font-size:18px;
-            }
-
-        }
-
-    </style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071318">
+  <meta name="description" content="Aydoğdu Studios; mobil oyunlar, üretkenlik araçları ve günlük hayatı kolaylaştıran Android uygulamaları geliştirir.">
+  <title>Aydoğdu Studios — Oyunlar ve Uygulamalar</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aydoğdu Studios",
+    "url": "https://aslndrds.github.io/",
+    "email": "imhotep.mstf@gmail.com",
+    "description": "Mobil oyunlar ve Android uygulamaları geliştiren bağımsız stüdyo."
+  }
+  </script>
 </head>
-
 <body>
+  <a class="skip-link" href="#urunler">İçeriğe geç</a>
 
-<header>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html" aria-label="Aydoğdu Studios ana sayfa">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong>AYDOĞDU</strong><small>STUDIOS</small></span>
+    </a>
 
-<div class="logo">
-AYDOĞDU STUDIOS
-</div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
+      <span></span><span></span><span></span><span class="sr-only">Menüyü aç</span>
+    </button>
 
-<nav>
+    <nav class="main-nav" id="main-nav" data-nav>
+      <a href="#urunler">Ürünler</a>
+      <a href="#yaklasim">Yaklaşımımız</a>
+      <a href="#yasal">Gizlilik merkezi</a>
+      <a class="nav-cta" href="contact.html">İletişim</a>
+    </nav>
+  </header>
 
-<a href="index.html">Ana Sayfa</a>
-<a href="#games">Oyunlar</a>
-<a href="privacy.html">Gizlilik</a>
-<a href="support.html">Destek</a>
-<a href="contact.html">İletişim</a>
+  <main>
+    <section class="hero">
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Bağımsız mobil ürün stüdyosu</p>
+        <h1>Oyunlardan günlük araçlara, <em>küçük ekranlara büyük fikirler.</em></h1>
+        <p class="hero-text">Aydoğdu Studios; eğlenceli oyunlar, üretkenlik araçları ve gerçek ihtiyaçlara odaklanan Android uygulamaları tasarlar ve geliştirir.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#urunler">Ürünleri keşfet <span aria-hidden="true">↘</span></a>
+          <a class="button button-quiet" href="support.html">Destek merkezi</a>
+        </div>
+      </div>
 
-</nav>
+      <div class="hero-stage" aria-label="Aydoğdu Studios ürün yelpazesi">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="stage-card stage-main">
+          <span class="stage-label">AYDOĞDU / 2026</span>
+          <strong>PLAY</strong>
+          <strong>CREATE</strong>
+          <strong>SOLVE</strong>
+        </div>
+        <div class="stage-chip chip-game"><span>7</span> oyun</div>
+        <div class="stage-chip chip-app"><span>6</span> uygulama</div>
+        <div class="stage-dot dot-one"></div>
+        <div class="stage-dot dot-two"></div>
+      </div>
 
-</header>
+      <div class="hero-stats" aria-label="Stüdyo özeti">
+        <div><strong>13</strong><span>Kamuya açık ürün sayfası</span></div>
+        <div><strong>2</strong><span>Oyun ve uygulama odağı</span></div>
+        <div><strong>1</strong><span>Bağımsız ürün stüdyosu</span></div>
+      </div>
+    </section>
 
-<section class="hero">
+    <section class="product-section section-shell" id="urunler">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> Ürünlerimiz</p>
+          <h2>Oyna, üret, hesapla.</h2>
+        </div>
+        <p>Bulmaca ve spor oyunlarından dosya araçlarına, çalışma hayatından aile odaklı deneyimlere uzanan ürün ailemiz.</p>
+      </div>
 
-<h1>Mobil Oyun Geliştiriyoruz</h1>
+      <div class="filter-bar" role="group" aria-label="Ürünleri filtrele">
+        <button class="filter-button is-active" type="button" data-filter="all">Tümü <span>13</span></button>
+        <button class="filter-button" type="button" data-filter="app">Uygulamalar <span>6</span></button>
+        <button class="filter-button" type="button" data-filter="game">Oyunlar <span>7</span></button>
+      </div>
 
-<p>
+      <div class="product-grid" data-product-grid>
+        <article class="product-card featured-card tone-blue" data-type="app">
+          <div class="card-top"><span class="product-kind">Uygulama</span><span class="product-status">Android</span></div>
+          <div class="product-symbol symbol-unitova" aria-hidden="true">U</div>
+          <h3>Unitova</h3>
+          <p>Birim dönüşümleri, günlük hesaplamalar ve farklı ihtiyaçlar için kapsamlı, tek merkezli araç kutusu.</p>
+          <div class="card-links"><a href="unitova-legal/index.html">Gizlilik ve yasal bilgiler <span>↗</span></a></div>
+        </article>
 
-Kaliteli, eğlenceli ve özgün mobil oyunlar geliştiriyoruz.
+        <article class="product-card featured-card tone-orange" data-type="app">
+          <div class="card-top"><span class="product-kind">Uygulama</span><span class="product-status">Üretkenlik</span></div>
+          <div class="product-symbol symbol-csv" aria-hidden="true">CSV</div>
+          <h3>CSV Editor &amp; PDF Tools</h3>
+          <p>CSV ve TSV dosyalarını düzenleme; arama, sıralama, temizleme ve PDF dâhil farklı biçimlere dışa aktarma.</p>
+          <div class="card-links">
+            <a href="https://play.google.com/store/apps/details?id=com.aslndrds.csveditorpdf">Google Play <span>↗</span></a>
+            <a href="csv-editor-pdf/privacy.html">Gizlilik</a>
+          </div>
+        </article>
 
-</p>
+        <article class="product-card tone-violet" data-type="app">
+          <div class="card-top"><span class="product-kind">Uygulama</span><span class="product-status">İş &amp; yaşam</span></div>
+          <div class="product-symbol symbol-work" aria-hidden="true">İH</div>
+          <h3>İş Hayatım</h3>
+          <p>Çalışma, mesai, izin, ücret, bordro, emeklilik ve CV süreçlerini tek yerde yöneten kapsamlı kişisel asistan.</p>
+          <div class="card-links"><a href="is-hayatim/index.html">Gizlilik ve hesap merkezi <span>↗</span></a></div>
+        </article>
 
-</section>
+        <article class="product-card tone-teal" data-type="app">
+          <div class="card-top"><span class="product-kind">Uygulama</span><span class="product-status">Aile</span></div>
+          <div class="product-symbol symbol-kids" aria-hidden="true">MD</div>
+          <h3>Minik Dünyam</h3>
+          <p>0–7 yaş çocuklar ve ebeveynleri için yaşa uygun, güvenli ve eğlenceli oyun etkinlikleri.</p>
+          <div class="card-links"><a href="minik-dunyam/privacy.html">Gizlilik politikası <span>↗</span></a></div>
+        </article>
 
-<section class="games" id="games">
+        <article class="product-card tone-sand" data-type="app">
+          <div class="card-top"><span class="product-kind">Uygulama</span><span class="product-status">Açık kaynak</span></div>
+          <div class="product-symbol symbol-gamevallum" aria-hidden="true">G</div>
+          <h3>Gamevallum</h3>
+          <p>Özgün portal bilmeceleri ve kullanıcının yasal oyun verileri için açık kaynak temelli Android macera oynatıcısı.</p>
+          <div class="card-links">
+            <a href="gamevallum/privacy.html">Gizlilik <span>↗</span></a>
+            <a href="gamevallum/source.html">Kaynak kodu</a>
+          </div>
+        </article>
 
-<h2>Oyunlarımız</h2>
+        <article class="product-card tone-huawei" data-type="app">
+          <div class="card-top"><span class="product-kind">Uygulama</span><span class="product-status">Huawei ekosistemi</span></div>
+          <div class="product-symbol symbol-music" aria-hidden="true">GT</div>
+          <h3>GT Music Bridge</h3>
+          <p>Huawei giyilebilir cihaz ile telefondaki etkin müzik uygulaması arasında oynatma ve medya bilgisi köprüsü.</p>
+          <div class="card-links"><a href="gt-music-bridge/privacy.html">Gizlilik politikası <span>↗</span></a></div>
+        </article>
 
-<div class="game-grid">
+        <article class="product-card wide-card tone-neon" data-type="game">
+          <div class="nova-art" aria-hidden="true"><span>2</span><span>0</span><span>4</span><span>8</span></div>
+          <div class="wide-copy">
+            <div class="card-top"><span class="product-kind">Oyun</span><span class="product-status">Neon bulmaca</span></div>
+            <h3>NOVA 2048 — 2027</h3>
+            <p>Özel taşlar, kombolar, günlük bulmacalar, neon temalar ve çok dilli deneyimle yeni nesil sayı birleştirme oyunu.</p>
+            <div class="card-links">
+              <a href="nova-2048/index.html">Oyunu keşfet <span>↗</span></a>
+              <a href="nova-2048/privacy.html">Gizlilik</a>
+            </div>
+          </div>
+        </article>
 
-<div class="card">
+        <article class="product-card tone-coral" data-type="game">
+          <div class="card-top"><span class="product-kind">Oyun</span><span class="product-status">Basketbol</span></div>
+          <div class="product-symbol symbol-swish" aria-hidden="true">SR</div>
+          <h3>SwishRift</h3>
+          <p>Gerçekçi pota fiziğini, fantastik dünyaları ve rekabetçi mücadeleleri buluşturan basketbol deneyimi.</p>
+          <div class="card-links"><a href="swishrift/index.html">Oyun ve destek merkezi <span>↗</span></a></div>
+        </article>
 
-<h3>✦ NOVA 2048 — 2027</h3>
+        <article class="product-card tone-green" data-type="game">
+          <div class="card-top"><span class="product-kind">Oyun</span><span class="product-status">120 bölüm</span></div>
+          <div class="product-symbol symbol-vine" aria-hidden="true">VB</div>
+          <h3>VineBound</h3>
+          <p>Mantık ve stratejiyi çevrimdışı oynanabilen, yüzlerce el yapımı bulmacayla birleştiren mobil oyun.</p>
+          <div class="card-links">
+            <a href="https://github.com/aslndrds/aslndrds.github.io/releases/download/v0.4.1/Vinebound-v0.4.1-release-signed.apk">Android APK <span>↓</span></a>
+            <a href="privacy.html">Gizlilik</a>
+          </div>
+        </article>
 
-<p>Beş oyun modu, özel taşlar, neon cam tasarım, combo sistemi ve çok dilli sesli yönlendirmeyle yeni nesil sayı birleştirme oyunu.</p>
+        <article class="product-card tone-gold" data-type="game">
+          <div class="card-top"><span class="product-kind">Oyun</span><span class="product-status">Bulmaca</span></div>
+          <div class="product-symbol symbol-gears" aria-hidden="true">LG</div>
+          <h3>LumaGears: Mirror &amp; Gear</h3>
+          <p>Işık, hareket ve mekanik düzenekler etrafında şekillenen, ilerlemeli mobil bulmaca oyunu.</p>
+          <div class="card-links"><a href="lumagears/privacy/index.html">Gizlilik politikası <span>↗</span></a></div>
+        </article>
 
-<a class="button" href="nova-2048/index.html">Oyunu Keşfet</a>
+        <article class="product-card tone-pink" data-type="game">
+          <div class="card-top"><span class="product-kind">Oyun</span><span class="product-status">Arcade</span></div>
+          <div class="product-symbol symbol-neon" aria-hidden="true">NB</div>
+          <h3>Neon Blocks</h3>
+          <p>Canlı neon atmosferi, skor takibi ve hızlı kararlarla şekillenen erişilebilir blok oyunu.</p>
+          <div class="card-links"><a href="neon-blocks/privacy.html">Gizlilik politikası <span>↗</span></a></div>
+        </article>
 
-</div>
+        <article class="product-card tone-lime" data-type="game">
+          <div class="card-top"><span class="product-kind">Oyun</span><span class="product-status">Aile</span></div>
+          <div class="product-symbol symbol-frog" aria-hidden="true">KB</div>
+          <h3>Kurbağayı Besle</h3>
+          <p>Bölümler, sürprizler ve dikkat gerektiren hedeflerle her yaştan oyuncuya yönelik renkli refleks oyunu.</p>
+          <div class="card-links">
+            <a href="kurbagayi-besle/privacy.html">Gizlilik <span>↗</span></a>
+            <a href="kurbagayi-besle/data-deletion.html">Veri silme</a>
+          </div>
+        </article>
 
-<div class="card">
+        <article class="product-card tone-sky" data-type="game">
+          <div class="card-top"><span class="product-kind">Oyun</span><span class="product-status">Tahmin</span></div>
+          <div class="product-symbol symbol-peek" aria-hidden="true">?</div>
+          <h3>QuickPeek</h3>
+          <p>Bir görselin yalnızca birkaç karesinden doğru cevabı bulmaya dayanan, farklı kategorilere sahip tahmin oyunu.</p>
+          <div class="card-links"><a href="quickpeek/privacy.html">Gizlilik politikası <span>↗</span></a></div>
+        </article>
+      </div>
+    </section>
 
-<h3>✦ Gamevallum</h3>
+    <section class="approach-section section-shell" id="yaklasim">
+      <div class="approach-intro">
+        <p class="eyebrow"><span></span> Nasıl çalışıyoruz</p>
+        <h2>Tek bir türe değil, iyi fikre bağlıyız.</h2>
+        <p>Bir bulmaca oyununun hissinden günlük bir hesaplama aracının doğruluğuna kadar; her ürünü kendi ihtiyacına göre tasarlıyoruz.</p>
+      </div>
+      <div class="principles">
+        <article><span>01</span><h3>Amaca uygun</h3><p>Gereksiz karmaşa yerine temel ihtiyacı hızlı ve anlaşılır biçimde çözen deneyimler.</p></article>
+        <article><span>02</span><h3>Gizlilik bilinci</h3><p>Her ürün için açık veri açıklamaları ve kolay ulaşılabilen ürün bazlı gizlilik sayfaları.</p></article>
+        <article><span>03</span><h3>Gerçek cihaz odağı</h3><p>Farklı ekranlarda okunabilirlik, kararlılık ve günlük kullanıma hazır olma hedefi.</p></article>
+      </div>
+    </section>
 
-<p>
+    <section class="legal-section section-shell" id="yasal">
+      <div class="legal-panel">
+        <div class="legal-copy">
+          <p class="eyebrow light"><span></span> Gizlilik merkezi</p>
+          <h2>Her ürünün bilgisi kendi adresinde.</h2>
+          <p>Mevcut gizlilik, veri silme ve kullanım koşulları bağlantıları değiştirilmeden korunur. İhtiyacınız olan ürünü seçerek doğrudan ilgili belgeye ulaşabilirsiniz.</p>
+          <a class="button button-light" href="support.html">Tüm destek bağlantıları <span>↗</span></a>
+        </div>
+        <div class="legal-links">
+          <a href="unitova-legal/index.html"><span>Unitova</span><small>Gizlilik</small></a>
+          <a href="csv-editor-pdf/privacy.html"><span>CSV Editor &amp; PDF Tools</span><small>Gizlilik</small></a>
+          <a href="is-hayatim/index.html"><span>İş Hayatım</span><small>Hesap ve yasal bilgiler</small></a>
+          <a href="gt-music-bridge/privacy.html"><span>GT Music Bridge</span><small>Huawei · Gizlilik</small></a>
+          <a href="swishrift/index.html"><span>SwishRift</span><small>Gizlilik ve veri silme</small></a>
+          <a href="nova-2048/privacy.html"><span>NOVA 2048</span><small>Gizlilik</small></a>
+          <a href="support.html"><span>Diğer ürünler</span><small>Tümünü gör →</small></a>
+        </div>
+      </div>
+    </section>
 
-Özgün portal bilmeceleri ve kullanıcının yasal olarak edindiği uyumlu macera oyunları için açık kaynaklı Android oynatıcı.
+    <section class="contact-strip section-shell">
+      <div>
+        <p class="eyebrow"><span></span> Bize ulaşın</p>
+        <h2>Bir soru, öneri veya destek talebi mi var?</h2>
+      </div>
+      <a class="button button-primary" href="mailto:imhotep.mstf@gmail.com">imhotep.mstf@gmail.com <span>↗</span></a>
+    </section>
+  </main>
 
-</p>
-
-<a class="button" href="gamevallum/privacy.html">
-Gizlilik Politikası
-</a>
-
-</div>
-
-<div class="card">
-
-<h3>🌿 VineBound</h3>
-
-<p>
-
-Mantık ve strateji üzerine kurulu, çevrimdışı oynanabilen eğlenceli bulmaca oyunu.
-
-120 benzersiz bölüm.
-
-</p>
-
-<a class="button" href="https://github.com/aslndrds/aslndrds.github.io/releases/download/v0.4.1/Vinebound-v0.4.1-release-signed.apk">
-Android APK İndir
-</a>
-
-</div>
-
-<div class="card">
-
-<h3>❓ QuickPeek</h3>
-
-<p>
-
-Görselin yalnızca birkaç karesinden doğru cevabı bul. Farklı kategoriler, beş zorluk seviyesi, ipuçları ve yüzlerce soru.
-
-</p>
-
-<a class="button" href="quickpeek/privacy.html">
-Gizlilik Politikası
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 Aydoğdu Studios
-
-</footer>
-
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong>AYDOĞDU</strong><small>STUDIOS</small></span>
+    </a>
+    <p>Bağımsız oyunlar ve kullanışlı mobil uygulamalar.</p>
+    <nav aria-label="Alt menü">
+      <a href="support.html">Destek</a>
+      <a href="contact.html">İletişim</a>
+      <a href="https://github.com/aslndrds">GitHub</a>
+    </nav>
+    <small>© 2026 Aydoğdu Studios</small>
+  </footer>
 </body>
 </html>

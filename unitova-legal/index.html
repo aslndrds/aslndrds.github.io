@@ -3,13 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Unitova privacy policy and Turkish gizlilik politikası.">
-  <title>Unitova Privacy Policy</title>
+  <meta name="description" content="Unitova: Dönüştür ve Hesapla privacy policy and Turkish gizlilik politikası.">
+  <title>Unitova: Dönüştür ve Hesapla — Gizlilik Politikası</title>
   <style>
     :root { color-scheme: light dark; --accent:#087f8c; --accent2:#20a779; --paper:#ffffff; --ink:#162033; --muted:#58657a; --line:#dce4ed; --wash:#f4f8fb; }
     @media (prefers-color-scheme: dark) { :root { --paper:#111923; --ink:#edf4fb; --muted:#b1becc; --line:#2c3b4c; --wash:#0b121b; } }
     * { box-sizing:border-box; }
     body { margin:0; font:17px/1.68 system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); background:var(--wash); }
+    .site-nav { position:sticky; top:0; z-index:20; border-bottom:1px solid var(--line); background:color-mix(in srgb,var(--paper) 92%,transparent); backdrop-filter:blur(16px); }
+    .nav-inner { width:min(1100px,100%); min-height:72px; margin:auto; padding:12px 22px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:11px; color:var(--ink); text-decoration:none; font-weight:900; letter-spacing:.04em; }
+    .brand-mark { width:34px; height:34px; display:grid; place-items:center; border-radius:11px; color:white; background:linear-gradient(135deg,var(--accent),var(--accent2)); font-size:.86rem; }
+    .nav-links { display:flex; align-items:center; gap:8px; }
+    .nav-links a { padding:9px 13px; border:1px solid var(--line); border-radius:999px; color:var(--ink); text-decoration:none; font-size:.85rem; font-weight:800; }
+    .nav-links a:hover { border-color:var(--accent); color:var(--accent); }
     header { padding:56px 22px 46px; color:white; background:linear-gradient(135deg,#075985,var(--accent),var(--accent2)); }
     header div, main { width:min(900px,100%); margin:auto; }
     h1 { margin:0 0 8px; font-size:clamp(2.1rem,6vw,3.6rem); letter-spacing:-.04em; }
@@ -24,10 +31,25 @@
     a { color:var(--accent); }
     footer { text-align:center; color:var(--muted); padding:0 20px 40px; }
     @media (max-width:940px) { main { margin:0; border-width:0; border-radius:0; } }
+    @media (max-width:680px) {
+      .nav-inner { min-height:64px; }
+      .brand span:last-child { display:none; }
+      .nav-links a { padding:8px 10px; font-size:.76rem; }
+    }
   </style>
 </head>
 <body>
-  <header><div><h1>Unitova</h1><p>Privacy Policy · Gizlilik Politikası</p></div></header>
+  <nav class="site-nav" aria-label="Site menüsü">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">AS</span><span>AYDOĞDU STUDIOS</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Ana Sayfa</a>
+        <a href="../index.html#urunler">Uygulamalar</a>
+        <a href="../support.html">Destek</a>
+      </div>
+    </div>
+  </nav>
+  <header><div><h1>Unitova: Dönüştür ve Hesapla</h1><p>Privacy Policy · Gizlilik Politikası</p></div></header>
   <main>
     <p><span class="lang">English</span><span class="lang">Türkçe</span></p>
     <p class="meta"><strong>Effective / Yürürlük:</strong> 8 August 2026 / 8 Ağustos 2026<br><strong>Developer / Geliştirici:</strong> Aydogdu Studios<br><strong>Contact / İletişim:</strong> <a href="mailto:imhotep.mstf@gmail.com">imhotep.mstf@gmail.com</a></p>
@@ -64,6 +86,6 @@
     <p>Unitova 13 yaş ve üzerindeki kullanıcılar için tasarlanmıştır. 13 yaşından küçük çocuklardan kişisel bilgi toplamak amacıyla tasarlanmamıştır.</p>
     <p>Unitova'nın özellikleri veya veri uygulamaları değiştiğinde bu politika güncellenebilir. Önemli bir değişiklik dağıtılmadan önce sayfanın üstündeki yürürlük tarihi yenilenir.</p>
   </main>
-  <footer>© 2026 Aydogdu Studios · Unitova</footer>
+  <footer>© 2026 Aydogdu Studios · Unitova: Dönüştür ve Hesapla</footer>
 </body>
 </html>

@@ -1,0 +1,32 @@
+{
+  "releases": {
+    "12": {
+      "versionName": "0.4.2",
+      "notes": {
+        "tr": [
+          "Google Play lisans doğrulamasının sunucuya güvenilir biçimde ulaşması düzeltildi.",
+          "Güncelleme denetimi açılıştan kaldırıldı ve Ayarlar içindeki kullanıcı işlemine taşındı.",
+          "İsteğe bağlı, önerilen ve zorunlu güncellemeler değişiklik notlarıyla gösteriliyor."
+        ],
+        "en": [
+          "Reliable delivery of Google Play license verification to the server was fixed.",
+          "Update checks were removed from startup and moved to a user action in Settings.",
+          "Optional, recommended and required updates now show clear change notes."
+        ]
+      }
+    },
+    "11": {
+      "versionName": "0.4.1",
+      "notes": {
+        "tr": [
+          "Lisans doğrulama kesintileri artık deneme süresi bitmiş gibi gösterilmiyor.",
+          "Google hesap bağlantısı ve Play imzalama yapılandırması iyileştirildi."
+        ],
+        "en": [
+          "License verification outages are no longer shown as an expired trial.",
+          "Google account connection and Play signing configuration were improved."
+        ]
+      }
+    }
+  }
+}

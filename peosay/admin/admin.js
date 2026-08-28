@@ -46,6 +46,8 @@ function safeAuthError(error) {
   if (code.includes("popup-blocked")) return "Tarayıcı giriş penceresini engelledi. Bu site için açılır pencereye izin verip tekrar deneyin.";
   if (code.includes("popup-closed-by-user") || code.includes("cancelled-popup-request")) return "Google girişi iptal edildi.";
   if (code.includes("network-request-failed")) return "Ağ bağlantısı nedeniyle Google girişi tamamlanamadı.";
+  if (code.includes("web-storage-unsupported")) return "Tarayıcı oturum depolamasını engelliyor. Çerez ve site verisi iznini kontrol edin.";
+  if (code.includes("operation-not-supported-in-this-environment")) return "Bu tarayıcı ortamı Google açılır pencere girişini desteklemiyor.";
   return "Giriş tamamlanamadı. Firebase alan yetkisini ve internet bağlantısını kontrol edin.";
 }
 
@@ -522,6 +524,7 @@ async function start() {
   $("signInButton").addEventListener("click", async () => {
     try { await signInWithPopup(auth, new GoogleAuthProvider()); }
     catch (error) {
+      console.warn("Peosay admin auth failure", String(error?.code || "unknown"));
       const message = safeAuthError(error);
       if (String(error?.code || "").toLowerCase().includes("unauthorized-domain")) {
         setConnection("Firebase alan yetkisi gerekli", "danger");

@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+import { browserSessionPersistence, GoogleAuthProvider, initializeAuth, onAuthStateChanged, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 import { collection, getFirestore, limit, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-functions.js";
 
@@ -501,7 +501,7 @@ async function start() {
   }
 
   const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+  const auth = initializeAuth(app, { persistence: browserSessionPersistence });
   const db = getFirestore(app);
   const functions = getFunctions(app, "europe-west1");
   const savePoll = httpsCallable(functions, "adminUpsertPoll");

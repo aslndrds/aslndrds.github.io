@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com; style-src 'self'; img-src 'self' data: https://lh3.googleusercontent.com; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.cloudfunctions.net; frame-src https://accounts.google.com https://topora-mvp.firebaseapp.com; object-src 'none'; base-uri 'none'; form-action 'self' https://accounts.google.com; upgrade-insecure-requests">
+  <title>Peosay Admin</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span>P</span> PEOSAY <b>ADMIN</b></a>
+    <div class="account">
+      <span id="connectionState" class="pill warning">Yapılandırma denetleniyor</span>
+      <button id="signInButton" class="button primary" type="button" hidden>Google ile yönetici girişi</button>
+      <button id="signOutButton" class="button ghost" type="button" hidden>Çıkış</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="setupPanel" class="state-card">
+      <span class="kicker">GÜVENLİ BAŞLANGIÇ</span>
+      <h1>Yönetim merkezi hazırlanıyor.</h1>
+      <p id="setupMessage">Firebase bağlantısı denetleniyor. Yapılandırma yoksa hiçbir kullanıcı verisi istenmez.</p>
+    </section>
+
+    <section id="deniedPanel" class="state-card danger-card" hidden>
+      <span class="kicker">ERİŞİM REDDEDİLDİ</span>
+      <h1>Bu hesap yönetici değil.</h1>
+      <p>Panel yalnızca sunucu tarafında <code>admin: true</code> özel yetkisi atanmış hesaplara açılır.</p>
+    </section>
+
+    <div id="dashboard" hidden>
+      <section class="hero">
+        <div><span class="kicker">CANLI KONTROL</span><h1>Dünya ne diyor?</h1><p>Anketleri yayınla, raporları incele, sponsor bütçelerini yönet ve tüm değişiklikleri denetim kaydında izle.</p></div>
+        <div class="row-actions">
+          <button id="seedTurkeyButton" class="button ghost" type="button">Türkiye kataloğunu ekle</button>
+          <button id="newPollButton" class="button primary" type="button">+ Yeni anket</button>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Platform özeti">
+        <article><span>Yayınlanmış anket</span><strong id="publishedCount">0</strong></article>
+        <article><span>Toplam doğrulanmış oy</span><strong id="totalVoteCount">0</strong></article>
+        <article><span>Bekleyen rapor</span><strong id="pendingReportCount">0</strong></article>
+        <article><span>Süresi aşılmış rapor</span><strong id="overdueReportCount">0</strong></article>
+        <article><span>Son denetim kaydı</span><strong id="auditCount">0</strong></article>
+        <article><span>Aktif sponsor kampanyası</span><strong id="activeSponsorCount">0</strong></article>
+        <article><span>Aktif iş ortağı teklifi</span><strong id="activeAffiliateCount">0</strong></article>
+        <article><span>Fiziksel ürün taslağı</span><strong id="physicalProductCount">0</strong></article>
+        <article><span>İşlem bekleyen sipariş</span><strong id="physicalOrderCount">0</strong></article>
+        <article><span>Yayınlanmış oyun sürümü</span><strong id="publishedGameCount">0</strong></article>
+      </section>
+
+      <section class="panel audit-panel">
+        <div class="panel-head">
+          <div><span class="kicker">OYUN İÇERİĞİ</span><h2>Sürümlü ve çok dilli katalog</h2></div>
+          <div class="row-actions"><span id="gameDefinitionCount" class="count">0 kayıt</span><button id="newGameButton" class="button primary" type="button">+ Oyun sürümü</button></div>
+        </div>
+        <p class="section-note">Taslak içerik düzenlenebilir. Bir sürüm yayımlandıktan sonra sorular ve ödül oranı kilitlenir; değişiklik için yeni sürüm kimliği oluşturulur. Quiz cevapları hiçbir zaman tarayıcıya veya Android istemcisine açılmaz.</p>
+        <div id="gameDefinitionList" class="list empty">Henüz merkezi oyun sürümü yok.</div>
+      </section>
+
+      <section class="workspace physical-workspace">
+        <div class="panel wide">
+          <div class="panel-head">
+            <div><span class="kicker">FİZİKSEL MAĞAZA</span><h2>Ürün ve stok taslakları</h2></div>
+            <div class="row-actions"><span id="physicalProductListCount" class="count">0 kayıt</span><button id="newPhysicalProductButton" class="button primary" type="button">+ Ürün taslağı</button></div>
+          </div>
+          <p class="section-note">Canlı mağaza kapalıdır. Ürünler taslak hazırlanabilir; etkinleştirme yalnız yasal metinler, stok, kargo ve gizlilik kapıları açıldıktan sonra mümkündür.</p>
+          <div id="physicalProductList" class="list empty">Henüz fiziksel ürün taslağı yok.</div>
+        </div>
+        <div class="panel wide">
+          <div class="panel-head"><div><span class="kicker">SİPARİŞLER</span><h2>Onay, kargo ve iade kuyruğu</h2></div><span id="physicalOrderListCount" class="count">0 kayıt</span></div>
+          <p class="section-note">Adres doğrudan veritabanından okunmaz. Yalnız “Gönderim adresini aç” işlemi, açık amaç kaydıyla şifreli kasayı sunucuda çözer ve denetim izi bırakır.</p>
+          <div id="physicalOrderList" class="list empty">Henüz fiziksel sipariş yok.</div>
+        </div>
+      </section>
+
+      <section class="panel audit-panel">
+        <div class="panel-head">
+          <div><span class="kicker">SATIŞ ORTAKLIĞI</span><h2>Açıkça etiketli fiziksel teklifler</h2></div>
+          <div class="row-actions"><span id="affiliateCount" class="count">0 kayıt</span><button id="newAffiliateButton" class="button primary" type="button">+ Teklif</button></div>
+        </div>
+        <p class="section-note">Yalnızca fiziksel ürün veya canlı etkinlik bileti bağlantısı açılabilir. Komisyon bildirimi sunucu tarafından sabitlenir; tıklama ya da satın alma puan kazandırmaz.</p>
+        <div id="affiliateList" class="list empty">Henüz satış ortaklığı teklifi yok.</div>
+      </section>
+
+      <section class="panel audit-panel">
+        <div class="panel-head">
+          <div><span class="kicker">SPONSORLUK</span><h2>Bütçe sınırlı kampanyalar</h2></div>
+          <div class="row-actions"><span id="sponsorCount" class="count">0 kayıt</span><button id="newSponsorButton" class="button primary" type="button">+ Kampanya</button></div>
+        </div>
+        <p class="section-note">Sponsor sıralama veya oy sonucu satın alamaz. Ödül yalnızca sabit oran, açık etiket ve ayrılmış kampanya bütçesiyle verilir.</p>
+        <div id="sponsorList" class="list empty">Henüz sponsor kampanyası yok.</div>
+      </section>
+
+      <section class="workspace">
+        <div class="panel wide">
+          <div class="panel-head"><div><span class="kicker">ANKETLER</span><h2>Yayın akışı</h2></div><span id="pollCount" class="count">0 kayıt</span></div>
+          <div id="pollList" class="list empty">Henüz anket yok.</div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><span class="kicker">MODERASYON</span><h2>Rapor kuyruğu</h2></div></div>
+          <div id="reportList" class="list empty">Bekleyen rapor yok.</div>
+        </div>
+      </section>
+
+      <section class="panel audit-panel">
+        <div class="panel-head"><div><span class="kicker">DENETİM</span><h2>Değiştirilemez işlem günlüğü</h2></div></div>
+        <div id="auditList" class="list empty">Henüz yönetim işlemi yok.</div>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="pollDialog">
+    <form id="pollForm" method="dialog">
+      <div class="dialog-head"><div><span class="kicker">ANKET EDİTÖRÜ</span><h2 id="dialogTitle">Yeni anket</h2></div><button id="closePollButton" class="icon-button" type="button" aria-label="Kapat">×</button></div>
+      <input id="pollId" type="hidden">
+      <label>Soru<input id="question" required minlength="8" maxlength="240"></label>
+      <div class="form-row">
+        <label>Kategori<input id="category" required minlength="2" maxlength="60"></label>
+        <label>Durum<select id="status"><option value="draft">Taslak</option><option value="published">Yayınlandı</option><option value="archived">Arşivlendi</option></select></label>
+      </div>
+      <div class="form-row">
+        <label>Kapsam<select id="scope"><option value="global">Global</option><option value="country">Ülkeye özel</option></select></label>
+        <label>Ülke kodu<input id="countryCode" maxlength="2" placeholder="TR"></label>
+        <label>İçerik dili<input id="languageCode" maxlength="6" value="tr" placeholder="tr veya en-US"></label>
+      </div>
+      <label>Seçenekler <small>Her satır: benzersiz_kimlik | görünen ad</small><textarea id="options" required rows="6" placeholder="secenek_a | Birinci seçenek&#10;secenek_b | İkinci seçenek"></textarea></label>
+      <label>Yöntem notu<textarea id="methodology" maxlength="600" rows="3" placeholder="Sonuçların nasıl yorumlanacağını açıklayın."></textarea></label>
+      <p id="formError" class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="button ghost" value="cancel" type="button" id="cancelPollButton">Vazgeç</button><button class="button primary" type="submit">Güvenli biçimde kaydet</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="affiliateDialog">
+    <form id="affiliateForm" method="dialog">
+      <div class="dialog-head"><div><span class="kicker">SATIŞ ORTAKLIĞI</span><h2 id="affiliateDialogTitle">Yeni teklif</h2></div><button id="closeAffiliateButton" class="icon-button" type="button" aria-label="Kapat">×</button></div>
+      <input id="affiliateOfferId" type="hidden">
+      <div class="form-row">
+        <label>Satıcı adı<input id="affiliateMerchant" required minlength="2" maxlength="120"></label>
+        <label>Durum<select id="affiliateStatus"><option value="draft">Taslak</option><option value="active">Aktif</option><option value="paused">Duraklatıldı</option><option value="ended">Sona erdi</option></select></label>
+        <label>Teklif türü<select id="affiliateKind"><option value="physical_goods">Fiziksel ürün</option><option value="live_event_ticket">Canlı etkinlik bileti</option></select></label>
+      </div>
+      <label>Başlık<input id="affiliateTitle" required minlength="4" maxlength="160"></label>
+      <label>Tarafsız açıklama<textarea id="affiliateDescription" required minlength="10" maxlength="500" rows="3"></textarea></label>
+      <label>Satış ortaklığı bağlantısı <small>Yalnızca HTTPS; kullanıcı doğrudan bu alan adına yönlendirilir.</small><input id="affiliateUrl" type="url" required maxlength="2048" placeholder="https://magaza.example/urun?ref=peosay"></label>
+      <div class="form-row">
+        <label>Başlangıç<input id="affiliateStartsAt" type="datetime-local" required></label>
+        <label>Bitiş<input id="affiliateEndsAt" type="datetime-local" required></label>
+      </div>
+      <label>Ülkeler <small>Boşsa global; virgülle iki harfli kodlar: TR, DE</small><input id="affiliateCountries" maxlength="120"></label>
+      <p class="section-note">Kullanıcıya “Peosay komisyon alabilir” bildirimi bağlantının yanında ve dış site onayında otomatik gösterilir. Puan verilemez.</p>
+      <p id="affiliateFormError" class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="button ghost" type="button" id="cancelAffiliateButton">Vazgeç</button><button class="button primary" type="submit">Açıklamalı teklifi kaydet</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="gameDialog">
+    <form id="gameForm" method="dialog">
+      <div class="dialog-head"><div><span class="kicker">OYUN EDİTÖRÜ</span><h2 id="gameDialogTitle">Yeni oyun sürümü</h2></div><button id="closeGameButton" class="icon-button" type="button" aria-label="Kapat">×</button></div>
+      <div class="form-row">
+        <label>Sürüm kimliği<input id="gameId" required minlength="3" maxlength="80" placeholder="quiz-world-science-v1"></label>
+        <label>Sürüm<input id="gameVersion" type="number" required min="1" max="1000000" value="1"></label>
+        <label>Durum<select id="gameStatus"><option value="draft">Taslak</option><option value="published">Yayınlandı — içerik kilitlenir</option><option value="archived">Arşivlendi</option></select></label>
+      </div>
+      <div class="form-row">
+        <label>Tür<select id="gameKind"><option value="quiz">Soru-cevap</option><option value="word">Kelime çemberi</option></select></label>
+        <label>Döngü<select id="gameCadence"><option value="once">Bir kez</option><option value="daily">Günlük</option><option value="weekly">Haftalık</option></select></label>
+        <label>Kategori anahtarı<input id="gameCategory" required minlength="2" maxlength="60" value="general"></label>
+      </div>
+      <div class="form-row">
+        <label>TR başlık<input id="gameTitleTr" required minlength="2" maxlength="100"></label>
+        <label>EN başlık<input id="gameTitleEn" required minlength="2" maxlength="100"></label>
+      </div>
+      <div class="form-row">
+        <label>TR alt başlık<input id="gameSubtitleTr" required minlength="2" maxlength="240"></label>
+        <label>EN alt başlık<input id="gameSubtitleEn" required minlength="2" maxlength="240"></label>
+      </div>
+      <div class="form-row">
+        <label>Ülkeler <small>Boşsa global; TR, DE</small><input id="gameCountries" maxlength="180"></label>
+        <label>Cevap başına XP<input id="gamePoints" type="number" required min="0" max="100" value="5"></label>
+        <label>Tamamlama bonusu<input id="gameBonus" type="number" required min="0" max="500" value="5"></label>
+      </div>
+      <div class="form-row">
+        <label>Döngü sırası<input id="gameRotationIndex" type="number" min="0" max="99" value="0"></label>
+        <label>Döngü boyutu<input id="gameRotationSize" type="number" min="1" max="100" value="1"></label>
+      </div>
+      <label>İçerik JSON'u <small>Quiz: prompt/options/correctOptionId dizisi. Kelime: clue/answer nesnesi. Doğru quiz seçenekleri sunucu kasasına ayrılır.</small><textarea id="gameContent" required rows="14" spellcheck="false"></textarea></label>
+      <p id="gameFormError" class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="button ghost" type="button" id="cancelGameButton">Vazgeç</button><button class="button primary" type="submit">Sürümü güvenli kaydet</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="physicalProductDialog">
+    <form id="physicalProductForm" method="dialog">
+      <div class="dialog-head"><div><span class="kicker">FİZİKSEL ÜRÜN</span><h2 id="physicalProductDialogTitle">Yeni ürün taslağı</h2></div><button id="closePhysicalProductButton" class="icon-button" type="button" aria-label="Kapat">×</button></div>
+      <input id="physicalProductId" type="hidden">
+      <div class="form-row">
+        <label>Başlık<input id="physicalProductTitle" required minlength="3" maxlength="160"></label>
+        <label>Durum<select id="physicalProductStatus"><option value="draft">Taslak</option><option value="paused">Duraklatıldı</option><option value="ended">Sona erdi</option><option value="active">Aktif — kapılar açıksa</option></select></label>
+      </div>
+      <label>Açıklama<textarea id="physicalProductDescription" required minlength="10" maxlength="1200" rows="4"></textarea></label>
+      <label>Ürün görseli <small>İsteğe bağlı, yalnız HTTPS.</small><input id="physicalProductImageUrl" type="url" maxlength="2048" placeholder="https://..."></label>
+      <div class="form-row">
+        <label>Ödül Puanı fiyatı<input id="physicalProductPrice" type="number" required min="1" max="100000000" value="1000"></label>
+        <label>Satılabilir stok<input id="physicalProductStock" type="number" required min="0" max="1000000" value="0"></label>
+        <label>Kullanıcı sınırı<input id="physicalProductLimit" type="number" required min="1" max="100" value="1"></label>
+      </div>
+      <label>Gönderim ülkeleri <small>Virgülle iki harfli kodlar: TR, DE</small><input id="physicalProductCountries" required maxlength="180" value="TR"></label>
+      <p id="physicalProductFormError" class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="button ghost" type="button" id="cancelPhysicalProductButton">Vazgeç</button><button class="button primary" type="submit">Ürün taslağını kaydet</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="shipmentDialog">
+    <form id="shipmentForm" method="dialog">
+      <div class="dialog-head"><div><span class="kicker">KARGO KAYDI</span><h2>Siparişi kargola</h2></div><button id="closeShipmentButton" class="icon-button" type="button" aria-label="Kapat">×</button></div>
+      <input id="shipmentOrderId" type="hidden">
+      <label>Kargo şirketi<input id="carrierName" required minlength="2" maxlength="80"></label>
+      <label>Takip kodu<input id="trackingCode" required minlength="3" maxlength="120"></label>
+      <label>Takip bağlantısı <small>İsteğe bağlı, yalnız HTTPS.</small><input id="trackingUrl" type="url" maxlength="2048" placeholder="https://..."></label>
+      <p id="shipmentFormError" class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="button ghost" type="button" id="cancelShipmentButton">Vazgeç</button><button class="button primary" type="submit">Kargoyu denetimli kaydet</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="shippingDetailsDialog">
+    <form method="dialog">
+      <div class="dialog-head"><div><span class="kicker">ŞİFRELİ GÖNDERİM VERİSİ</span><h2>Gönderim adresi</h2></div><button id="closeShippingDetailsButton" class="icon-button" type="button" aria-label="Kapat">×</button></div>
+      <p class="section-note">Bu görüntüleme “fulfillment” amacıyla denetim kaydına yazılmıştır. Veriyi yalnız kargo hazırlığı için kullanın.</p>
+      <div id="shippingDetailsView" class="address-card"></div>
+      <div class="dialog-actions"><button class="button primary" value="close" type="submit">Kapat</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="sponsorDialog">
+    <form id="sponsorForm" method="dialog">
+      <div class="dialog-head"><div><span class="kicker">SPONSOR KAMPANYASI</span><h2 id="sponsorDialogTitle">Yeni kampanya</h2></div><button id="closeSponsorButton" class="icon-button" type="button" aria-label="Kapat">×</button></div>
+      <input id="campaignId" type="hidden">
+      <div class="form-row">
+        <label>Sponsor adı<input id="sponsorName" required minlength="2" maxlength="120"></label>
+        <label>Kampanya durumu<select id="sponsorStatus"><option value="draft">Taslak</option><option value="active">Aktif</option><option value="paused">Duraklatıldı</option><option value="ended">Sona erdi</option></select></label>
+      </div>
+      <label>Başlık<input id="sponsorTitle" required minlength="4" maxlength="160"></label>
+      <label>Açıklama ve sponsor bildirimi<textarea id="sponsorDisclosure" required minlength="10" maxlength="500" rows="3" placeholder="Bu görev ... tarafından desteklenmektedir."></textarea></label>
+      <div class="form-row">
+        <label>Puan türü<select id="sponsorCurrency"><option value="xp">XP — yalnızca dijital</option><option value="reward">Ödül Puanı — bütçe karşılıklı</option></select></label>
+        <label>Görev başına puan<input id="pointsPerClaim" type="number" required min="1" max="10000" value="3"></label>
+        <label>Toplam puan bütçesi<input id="totalBudgetPoints" type="number" required min="1" max="100000000" value="300"></label>
+      </div>
+      <div class="form-row">
+        <label>Başlangıç<input id="sponsorStartsAt" type="datetime-local" required></label>
+        <label>Bitiş<input id="sponsorEndsAt" type="datetime-local" required></label>
+      </div>
+      <label>Ülkeler <small>Boşsa global; virgülle iki harfli kodlar: TR, DE</small><input id="sponsorCountries" maxlength="120"></label>
+      <label>Kamuya açık kampanya koşulları<input id="sponsorTermsUrl" type="url" required maxlength="2048" placeholder="https://..."></label>
+      <p id="sponsorFormError" class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="button ghost" type="button" id="cancelSponsorButton">Vazgeç</button><button class="button primary" type="submit">Bütçe kontrollü kaydet</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>

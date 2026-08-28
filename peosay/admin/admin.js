@@ -37,6 +37,18 @@ function safeActionError(fallback, error) {
   return fallback;
 }
 
+function safeAuthError(error) {
+  const code = String(error?.code || "").toLowerCase();
+  if (code.includes("unauthorized-domain")) {
+    return "Bu GitHub alanı Firebase Authentication yetkili alanlarına henüz eklenmemiş. Yönetici onayıyla aslndrds.github.io alanı yetkilendirilmelidir.";
+  }
+  if (code.includes("operation-not-allowed")) return "Google ile giriş Firebase projesinde etkin değil.";
+  if (code.includes("popup-blocked")) return "Tarayıcı giriş penceresini engelledi. Bu site için açılır pencereye izin verip tekrar deneyin.";
+  if (code.includes("popup-closed-by-user") || code.includes("cancelled-popup-request")) return "Google girişi iptal edildi.";
+  if (code.includes("network-request-failed")) return "Ağ bağlantısı nedeniyle Google girişi tamamlanamadı.";
+  return "Giriş tamamlanamadı. Firebase alan yetkisini ve internet bağlantısını kontrol edin.";
+}
+
 function clearListeners() {
   state.unsubscribers.forEach((unsubscribe) => unsubscribe());
   state.unsubscribers = [];
@@ -510,8 +522,12 @@ async function start() {
   $("signInButton").addEventListener("click", async () => {
     try { await signInWithPopup(auth, new GoogleAuthProvider()); }
     catch (error) {
-      if (String(error?.code || "").includes("popup-closed-by-user")) showToast("Google girişi iptal edildi.");
-      else showToast("Giriş tamamlanamadı. Lütfen tekrar deneyin.");
+      const message = safeAuthError(error);
+      if (String(error?.code || "").toLowerCase().includes("unauthorized-domain")) {
+        setConnection("Firebase alan yetkisi gerekli", "danger");
+        $("setupMessage").textContent = message;
+      }
+      showToast(message);
     }
   });
   $("signOutButton").addEventListener("click", () => signOut(auth));

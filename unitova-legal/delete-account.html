@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Request deletion of a Unitova account and associated data. Unitova hesap ve veri silme talebi.">
+  <title>Unitova: Dönüştür ve Hesapla — Hesap ve Veri Silme</title>
+  <style>
+    :root { color-scheme:light dark; --accent:#087f8c; --accent2:#20a779; --paper:#fff; --ink:#162033; --muted:#58657a; --line:#dce4ed; --wash:#f4f8fb; }
+    @media (prefers-color-scheme:dark) { :root { --paper:#111923; --ink:#edf4fb; --muted:#b1becc; --line:#2c3b4c; --wash:#0b121b; } }
+    * { box-sizing:border-box; }
+    .site-nav { position:sticky; top:0; z-index:20; border-bottom:1px solid var(--line); background:color-mix(in srgb,var(--paper) 92%,transparent); backdrop-filter:blur(16px); }
+    .nav-inner { width:min(1100px,100%); min-height:72px; margin:auto; padding:12px 22px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:11px; color:var(--ink); text-decoration:none; font-weight:900; letter-spacing:.04em; }
+    .brand-mark { width:34px; height:34px; display:grid; place-items:center; border-radius:11px; color:white; background:linear-gradient(135deg,var(--accent),var(--accent2)); font-size:.86rem; }
+    .nav-links { display:flex; align-items:center; gap:8px; }
+    .nav-links a { padding:9px 13px; border:1px solid var(--line); border-radius:999px; color:var(--ink); text-decoration:none; font-size:.85rem; font-weight:800; }
+    .nav-links a:hover { border-color:var(--accent); color:var(--accent); }
+    body { margin:0; font:17px/1.68 system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); background:var(--wash); }
+    header { padding:52px 22px 42px; color:#fff; background:linear-gradient(135deg,#075985,var(--accent),var(--accent2)); }
+    header div, main { width:min(900px,100%); margin:auto; }
+    h1 { margin:0 0 8px; font-size:clamp(2rem,6vw,3.4rem); letter-spacing:-.04em; }
+    header p { margin:0; opacity:.92; }
+    main { margin:24px auto 60px; padding:clamp(22px,5vw,54px); background:var(--paper); border:1px solid var(--line); border-radius:28px; box-shadow:0 16px 45px rgba(22,32,51,.08); }
+    h2 { margin-top:2.4em; padding-top:1.1em; border-top:1px solid var(--line); }
+    h2:first-of-type { margin-top:1.3em; }
+    h3 { color:var(--accent); }
+    .meta, .notice { padding:16px 18px; border-radius:16px; background:var(--wash); }
+    .button { display:inline-block; margin:8px 0 14px; padding:12px 18px; border-radius:999px; color:#fff; background:var(--accent); font-weight:800; text-decoration:none; }
+    a { color:var(--accent); }
+    li { margin:.45em 0; }
+    footer { text-align:center; color:var(--muted); padding:0 20px 40px; }
+    @media (max-width:940px) { main { margin:0; border-width:0; border-radius:0; } }
+    @media (max-width:680px) {
+      .nav-inner { min-height:64px; }
+      .brand span:last-child { display:none; }
+      .nav-links a { padding:8px 10px; font-size:.76rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Site menüsü">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">AS</span><span>AYDOĞDU STUDIOS</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Ana Sayfa</a>
+        <a href="../index.html#urunler">Uygulamalar</a>
+        <a href="../support.html">Destek</a>
+      </div>
+    </div>
+  </nav>
+  <header><div><h1>Unitova: Dönüştür ve Hesapla</h1><p>Account and data deletion · Hesap ve veri silme</p></div></header>
+  <main>
+    <p class="meta"><strong>App:</strong> Unitova · <strong>Package:</strong> <code>com.unitova.app</code><br><strong>Developer:</strong> Aydogdu Studios · <strong>Contact:</strong> <a href="mailto:imhotep.mstf@gmail.com">imhotep.mstf@gmail.com</a></p>
+    <p><a href="index.html">Privacy Policy · Gizlilik Politikası</a></p>
+
+    <h2>English</h2>
+    <p>You can request deletion of the Unitova account identity and associated server-side data without reinstalling the app.</p>
+    <h3>How to request deletion</h3>
+    <ol>
+      <li>Use the Google account connected to Unitova, if one was connected.</li>
+      <li>Send an email with the subject “Unitova account and data deletion request”.</li>
+      <li>State that you want your Unitova Firebase account identity and associated server-side data deleted. Do not send passwords, purchase tokens, card details or identity documents.</li>
+      <li>We may reply only to confirm account ownership or clarify the scope. Eligible requests are normally completed within 30 days.</li>
+    </ol>
+    <a class="button" href="mailto:imhotep.mstf@gmail.com?subject=Unitova%20account%20and%20data%20deletion%20request&body=I%20request%20deletion%20of%20my%20Unitova%20account%20identity%20and%20associated%20server-side%20data.%20I%20will%20not%20include%20a%20password%2C%20purchase%20token%2C%20card%20details%20or%20identity%20document.">Create deletion email</a>
+    <h3>Data deleted</h3>
+    <ul>
+      <li>The Unitova Firebase Authentication identity that we can match to the request.</li>
+      <li>The associated Unitova entitlement record and non-required server-side account data.</li>
+      <li>The Unitova-side association with hashed purchase verification records when it is not legally or operationally required to retain it.</li>
+    </ul>
+    <h3>Data that may be retained</h3>
+    <p>Google Play purchase, subscription, refund and accounting records are controlled by Google and may be retained where required for fraud prevention, legal, tax or accounting duties. Unitova may retain the minimum verification record required for those purposes. To prevent repeated free-trial abuse after account deletion, Unitova also retains the original trial start time and purpose-separated one-way digests representing that the App Set ID and/or connected Google account used a trial. These records do not contain the raw App Set ID, email address or Google provider identifier and are not used for advertising, analytics or personalization. Deleting Unitova data does not automatically cancel a Google Play subscription; subscriptions are managed in Google Play.</p>
+    <p class="notice">Local favorites, history, preferences and cached data can be deleted immediately by clearing Unitova storage in Android settings or uninstalling the app.</p>
+
+    <h2>Türkçe</h2>
+    <p>Uygulamayı yeniden yüklemeden Unitova hesap kimliğinizin ve ilişkili sunucu verilerinin silinmesini isteyebilirsiniz.</p>
+    <h3>Silme talebi nasıl gönderilir?</h3>
+    <ol>
+      <li>Unitova’ya bir Google hesabı bağladıysanız talebi bu hesapla gönderin.</li>
+      <li>Konu kısmına “Unitova hesap ve veri silme talebi” yazarak e-posta gönderin.</li>
+      <li>Unitova Firebase hesap kimliğinizin ve ilişkili sunucu verilerinin silinmesini istediğinizi belirtin. Parola, satın alma belirteci, kart bilgisi veya kimlik belgesi göndermeyin.</li>
+      <li>Yalnız hesap sahipliğini doğrulamak veya talebin kapsamını netleştirmek için yanıt verebiliriz. Uygun talepler normalde 30 gün içinde tamamlanır.</li>
+    </ol>
+    <a class="button" href="mailto:imhotep.mstf@gmail.com?subject=Unitova%20hesap%20ve%20veri%20silme%20talebi&body=Unitova%20hesap%20kimli%C4%9Fimin%20ve%20ili%C5%9Fkili%20sunucu%20verilerimin%20silinmesini%20istiyorum.%20Parola%2C%20sat%C4%B1n%20alma%20belirteci%2C%20kart%20bilgisi%20veya%20kimlik%20belgesi%20g%C3%B6ndermeyece%C4%9Fim.">Silme e-postası oluştur</a>
+    <h3>Silinecek veriler</h3>
+    <ul>
+      <li>Taleple eşleştirebildiğimiz Unitova Firebase Authentication hesap kimliği.</li>
+      <li>İlişkili Unitova Pro hak kaydı ve saklanması gerekmeyen sunucu tarafı hesap verileri.</li>
+      <li>Yasal veya operasyonel saklama gerekmiyorsa özetlenmiş satın alma doğrulama kayıtlarıyla Unitova tarafındaki bağlantı.</li>
+    </ul>
+    <h3>Saklanabilecek veriler</h3>
+    <p>Google Play satın alma, abonelik, iade ve muhasebe kayıtları Google tarafından yönetilir; sahteciliği önleme, yasal, vergi veya muhasebe yükümlülükleri için saklanabilir. Unitova bu amaçlarla gereken asgari doğrulama kaydını tutabilir. Hesap silindikten sonra ücretsiz denemenin tekrar kullanılmasını önlemek için Unitova ayrıca ilk deneme başlangıç zamanını ve App Set ID'nin ve/veya bağlı Google hesabının deneme kullandığını temsil eden amaçları ayrılmış tek yönlü özetleri saklar. Bu kayıtlarda ham App Set ID, e-posta adresi veya Google sağlayıcı kimliği bulunmaz; reklam, analiz ya da kişiselleştirme için kullanılmaz. Unitova verilerinin silinmesi Google Play aboneliğini kendiliğinden iptal etmez; abonelikler Google Play üzerinden yönetilir.</p>
+    <p class="notice">Yerel favoriler, geçmiş, tercihler ve önbellek; Android ayarlarından Unitova depolama alanı temizlenerek veya uygulama kaldırılarak hemen silinebilir.</p>
+  </main>
+  <footer>© 2026 Aydogdu Studios · Unitova: Dönüştür ve Hesapla</footer>
+</body>
+</html>
